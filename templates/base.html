@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="icon" href="/static/images/logo.png">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-<link rel="icon" href="logo.png" type="image/x-icon">
+{% block head %} {% endblock head %}
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/css/style.css">
 <script src="https://kit.fontawesome.com/92608aa66e.js" crossorigin="anonymous"></script>
-<title>{% block title %}{% endblock title %} - Biplov G'</title>
+<title>{% block title %}{% endblock title %} - Biplov Gautam</title>
 <link rel="stylesheet" href="/static/css/{% block style %}{% endblock style %}">
 </head>
 <body>
 <nav class="navbar">
-<div class="brand"><a href="/" >Biplov G'</a></div>
+<div class="brand"><a href="/" >Biplov Gautam</a></div>
 <div id="menu-btn" class="menu-btn">
 <i class="fas fa-bars"></i>
 </div>
 <div class="nav-items">
   <ul>
     <li><a href="/" >Home</a></li>
-    <li><a href="/about" >About</a></li>
-    <li><a href="/services" >Services</a></li>
     <li><a href="/projects" >Projects</a></li>
+    <li><a href="/services" >Services</a></li>
     <li><a href="/contact-me" >Contact me</a></li>
+    <li><a href="/about" >About me</a></li>
   </ul>
 </div>
 </nav>
-<main>
+
 {% block body %}
 {% endblock body %}
-</main>
-<hr>
+
 <br>
-<footer>
+<footer class="footer1">
 <ul class="social-links">
-<li><a href="https://facebook.com/biplov.gautam.31" target="_blank"><i color="white" class="fa-brands fa-facebook"></i></a></li>
-<li><a href="https://twitter.com/BiplovGuatam_" target="_blank"><i color="white" class="fa-brands fa-twitter"></i></a></li>
-<li><a href="https://instagram.com/biplov_gautam" target="_blank"><i color="white" class="fa-brands fa-instagram"></i></a></li>
-<li><a href="https://GitHub.com/biplovgautam" target="_blank"><i color="white" class="fa-brands fa-github"></i></a></li>
-</ul>
+<li><a href="https://facebook.com/biplov.gautam.31" target="_blank"><i color="white" class="fa-brands fa-facebook fa-xl"></i></a></li>
+<li><a href="https://twitter.com/BiplovGuatam_" target="_blank"><i color="white" class="fa-brands fa-twitter fa-xl"></i></a></li>
+<li><a href="https://instagram.com/biplov_gautam" target="_blank"><i color="white" class="fa-brands fa-instagram fa-xl"></i></a></li>
+<li><a href="https://GitHub.com/biplovgautam" target="_blank"><i color="white" class="fa-brands fa-github fa-xl"></i></a></li>
+</ul><br>
 <ul class="links">
 <li><a href="/" >Home</a></li>
 <li><a href="/services" >Services</a></li>
 <li><a href="/projects" >Projects</a></li>
 <li><a href="/about" >About</a></li>
-</ul>
+</ul><br>
 <div class="copy">Copyright &copy 2023 Biplovgautam</div>
 </footer>
 <script>

@@ -1,0 +1,50 @@
+.laxmi {
+    -webkit-filter: drop-shadow(0px 0px 14px lightblue);
+    filter: drop-shadow(0px 0px 14px lightblue);
+}
+
+.s1 {
+    margin: 20px;
+    display: flex;
+}
+
+
+.d1 {
+    position: relative;
+    margin: 0px 50px 0 60px;
+    width: 100%;
+    height: 500px;
+
+}
+
+.s1 .d1 .laxmileft {
+    position: relative;
+    left: 0%;
+    right: 100;
+
+}
+
+.s1 .d1 .laxmiright {
+    position: relative;
+    right: 0;
+    text-align: right;
+    top: 0;
+    margin: -310px 0 0 0;
+    
+
+}
+
+.laxmiright h2 {
+    font-size: 35px;
+    font-weight: 700;
+    padding: 0 0;
+    color: rgb(255, 233, 67);
+}
+
+.s01 .h1 {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 550;
+}

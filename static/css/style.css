@@ -44,9 +44,11 @@ nav ul li:hover,nav ul li:focus{
 background:white;
 color:black;
 border-radius:7px;
+box-shadow: 0px 0px 20px rgb(0, 191, 255);
 }
 }
 footer{
+    background-image: linear-gradient(RGB(0,0,33), rgb(0, 0, 12));
 align-items:center;
 justify-content:center;
 width:100%;
@@ -68,6 +70,26 @@ font-size:15px;
 footer ul i {
 margin:0 10px;
 }
+
+.footer1 ul li a i{
+    transition: 0.5s;
+}
+.footer1 .social-links li a i:hover{
+    transform: translateY(-5px);
+}
+.footer1 ul li a{
+    transition: 0.2s;
+}
+.footer1 ul li a:hover{
+    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+    
+    color: rgb(0, 157, 255);
+}
+
+.footer1 .links li a:hover{
+    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+}
+
 .menu-btn{
 display:none;
 }
@@ -125,6 +147,15 @@ transform: translateY(-50%);
 nav ul.active{
 top:80px;
 }
+}
+.brand{
+    transition: 0.4s;
+    text-shadow: 0px 0px 20px black;
+}
+.brand:hover{
+    
+    transition: 0.4s;
+    text-shadow: 0px 0px 10px rgb(0, 191, 255);
 }
 img{
 

@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
-{% block style %}about.css{% endblock style %}
-{% block title %}About{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/about.css">
+{% endblock head %}
+{% block title %}
+About Me
+{% endblock title %}
 {% block body %}
-
-{% endblock body %}
+  <section class="team">
+    <br>
+    <h1>About Me</h1>
+    <div class="container">
+      <div class="member">
+        <img class="abouimg" src="/static/images/bip.png" alt="Team Member 1">
+        <h2>Biplov Gautam</h2>
+        <h3>Developer</h3>
+        <p>I am student who recently finished class 12 board examination. And this is the website that i built in my free as a project as it will help me to gain some skill in web development.</p>
+      </div>
+    </div><br><br>
+  </section>
+{% endblock body%}

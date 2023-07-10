@@ -6,13 +6,13 @@ def index(request):
 	return render(request,'index.html')
 	
 def about(request):
-	return render(request,'sorry.html')
+	return render(request,'about.html')
 	
 def services(request):
 	return render(request,'sorry.html')
 	
 def projects(request):
-	return render(request,'sorry.html')
+	return render(request,'projects.html')
 	
 def contact(request):
 	return render(request,'sorry.html')

@@ -1,6 +1,28 @@
 {% extends 'base.html' %}
-{% block style %}projects.css{% endblock style %}
-{% block title %}Projects{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="/static/css/project.css">
+{% endblock head %}
+{% block title %}
+My Projects
+{% endblock title %}
 {% block body %}
+<section class="s01"><br><div class="h1"><h1>My Projects</h1></div><br></section>
+<section class="s1"><br>
+  <br>
+  <div class="d1"><a href="https://laxmibeekeeping.com.np/" target="_blank">
+  <div class="laxmileft">
+    <img height="300px" width="300px" class="laxmi" src="/static/images/laxmi.png" alt="error">
+  </div>
+  <div class="laxmiright">
+    <h2>Laxmi Bee Keeping</h2><br>
+    <div class="laxmiyt">
+      <iframe width="400" height="200" src="https://www.youtube.com/embed/iZH6ZvnmFBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    
+    <p></p>
+  </div></a>
+  </div><br>
+</section>
 
-{% endblock body %}
+{% endblock body%}
