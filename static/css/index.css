@@ -1,3 +1,7 @@
+section{
+  justify-content: center;
+  align-items: center;
+}
 .first-section {
   display: flex;
   justify-content: space-around;
@@ -99,7 +103,9 @@
   .first-section>div {
     width: 80%;
   }
-
+  .second-section>div {
+    width: 80%;
+  }
   .left-section {
     margin: -20px 0 0 0;
   }
@@ -113,45 +119,17 @@
   margin: 50px 0 0 0;
   display: flex;
 }
-.second-section .bipleft{
-  
-  /* position: relative;
-  left: 0%;
-  right: 100%;
-  margin: -140px 0 0 60px;
-  width: 400px;
-  height: 400px;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  pointer-events: none; */
-}
 
 .second-section .bipright{
   position: relative;
-  margin: -40px 0 0 10%;
+  margin: 0px 0 0 10%;
+  right: 0%;
 }
 .second-section .bipright h2{
   font-size: 35px;
   font-weight: 700;
   padding: 8vh 0;
   color: rgb(255, 255, 255);
-}
-.second-section .div2{
-  position: relative;
-  left: 0%;
-  right: 100%;
-  margin: -140px 0 0 60px;
-  width: 400px;
-  height: 400px;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  pointer-events: none;
 }
 
 .skills{
@@ -167,12 +145,83 @@
   box-sizing: border-box;
   background-color: rgb(159, 255, 255);
   border-radius: 5px;
-  padding: 5px 12px 5px 15px;
   transition: 0.5s;
+  padding: 0 5px 0 7px;
 }
 .servelink:hover{
   color:  rgb(159, 255, 255);
   background-color: black;
   box-shadow: 0px 0px 20px lightblue;
   transition: 0.5s;
+}
+.bipleft{
+  margin: -20px 0 0 0;
+  width: 480px;
+  height: 480px;
+}
+@media (max-width:900px){
+  /* .bipright{
+    display: none;
+  } */
+  .skills{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-count: 2;
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+  
+  .second-section{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .bipleft{
+    margin: 0 0 0 -40px ;
+    width: 400px;
+    height: 400px;
+  }
+  .servelink{
+    font-size: 20px;
+    font-weight: 550;
+  }
+  .second-section{
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media(max-width:500px){
+  .second-section .bipright{
+    margin: -20px 0 0 0;
+  }
+  .second-section{
+    margin: -80px 0 10px 0;
+  }
+  .servelink{
+    margin: 20px 0 0 0;
+  }
+}
+@media (max-width:440px){
+
+  .bipright{
+    margin: 0px 0 0 0;
+  }
+  .bipleft{
+    margin: 0 0 0 -90px ;
+    width: 350px;
+    height: 350px;
+  }
+  .skills{
+    margin-left: 10px;
+    gap: 2px;
+  }
+  .servelink{
+    margin: -10px 0 0 0;
+  }
+}
+@media(max-width:415px){
+  .servelink{
+    font-size: 18px;
+  }
 }
