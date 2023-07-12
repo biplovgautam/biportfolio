@@ -1,7 +1,8 @@
-section{
+section {
   justify-content: center;
   align-items: center;
 }
+
 .first-section {
   display: flex;
   justify-content: space-around;
@@ -13,6 +14,7 @@ section{
 }
 
 .right-section img {
+  
   position: relative;
   padding: 30px 30px 0 0;
   margin-left: -50px;
@@ -94,7 +96,7 @@ section{
   }
 }
 
-@media (max-width:500px) {
+@media (max-width:768px) {
   .first-section {
     flex-direction: column;
     align-items: center;
@@ -103,9 +105,11 @@ section{
   .first-section>div {
     width: 80%;
   }
+
   .second-section>div {
     width: 80%;
   }
+
   .left-section {
     margin: -20px 0 0 0;
   }
@@ -115,30 +119,67 @@ section{
   }
 
 }
-.second-section{
+
+.second-section {
   margin: 50px 0 0 0;
   display: flex;
 }
 
-.second-section .bipright{
+.second-section .bipright {
   position: relative;
   margin: 0px 0 0 10%;
   right: 0%;
 }
-.second-section .bipright h2{
+
+.second-section .bipright h2 {
   font-size: 35px;
   font-weight: 700;
   padding: 8vh 0;
   color: rgb(255, 255, 255);
 }
 
-.skills{
+.skills {
   margin: 0 0 0 10px;
   gap: 10px;
   letter-spacing: 37px;
 }
-
-.servelink{
+.fa-html5{
+  transition: 0.5s;
+  text-shadow: 0px 0px 15px rgb(0, 0, 0);
+}
+.fa-html5:hover{
+  cursor: pointer;
+  text-shadow: 0px 0px 30px lightblue;
+  transition: 0.5s;
+}
+.fa-css3-alt{
+  transition: 0.5s;
+  text-shadow: 0px 0px 15px rgb(0, 0, 0);
+}
+.fa-css3-alt:hover{
+  cursor: pointer;
+  text-shadow: 0px 0px 30px lightblue;
+  transition: 0.5s;
+}
+.fa-square-js{
+  transition: 0.5s;
+  text-shadow: 0px 0px 15px rgb(0, 0, 0);
+}
+.fa-square-js:hover{
+  cursor: pointer;
+  text-shadow: 0px 0px 30px lightblue;
+  transition: 0.5s;
+}
+.fa-python{
+  transition: 0.5s;
+  text-shadow: 0px 0px 15px rgb(0, 0, 0);
+}
+.fa-python:hover{
+  cursor: pointer;
+  text-shadow: 0px 0px 30px lightblue;
+  transition: 0.5s;
+}
+.servelink {
   font-size: 26px;
   font-weight: 550;
   color: black;
@@ -148,22 +189,34 @@ section{
   transition: 0.5s;
   padding: 0 5px 0 7px;
 }
-.servelink:hover{
-  color:  rgb(159, 255, 255);
+
+.servelink:hover {
+  color: rgb(159, 255, 255);
   background-color: black;
   box-shadow: 0px 0px 20px lightblue;
   transition: 0.5s;
 }
-.bipleft{
+
+.bipleft {
+  transition: 0.5s;
   margin: -20px 0 0 0;
   width: 480px;
   height: 480px;
+  -webkit-filter: drop-shadow(0px 0px 20px rgb(0, 0, 0));
+    filter: drop-shadow(0px 0px 20px rgb(0, 0, 0));
 }
-@media (max-width:900px){
+
+@media (min-width:460px) {
+  .skills{
+    margin: 0 0 0 -20px;
+  }
+}
+@media (max-width:900px) {
+
   /* .bipright{
     display: none;
   } */
-  .skills{
+  .skills {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,57 +224,123 @@ section{
     column-gap: 20px;
     row-gap: 20px;
   }
-  
-  .second-section{
+
+  .second-section {
     overflow: hidden;
     display: flex;
     flex-direction: column;
   }
-  .bipleft{
-    margin: 0 0 0 -40px ;
+
+  .bipleft {
+    margin: 0 0 0 -40px;
     width: 400px;
     height: 400px;
   }
-  .servelink{
+
+  .servelink {
     font-size: 20px;
     font-weight: 550;
   }
-  .second-section{
+
+  .second-section {
     justify-content: center;
     align-items: center;
   }
 }
-@media(max-width:500px){
-  .second-section .bipright{
-    margin: -20px 0 0 0;
+
+@media(max-width:500px) {
+  section{
+    justify-content: center;
+    align-items: center;
   }
-  .second-section{
+  .second-section .bipright {
+    margin: -20px 0 0 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .second-section {
     margin: -80px 0 10px 0;
   }
-  .servelink{
+
+  .servelink {
     margin: 20px 0 0 0;
   }
+  .skills{
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 60px;
+  }
 }
-@media (max-width:440px){
 
-  .bipright{
+@media (max-width:440px) {
+
+  .bipright {
     margin: 0px 0 0 0;
   }
-  .bipleft{
-    margin: 0 0 0 -90px ;
+
+  .bipleft {
+    margin: 0 0 0 -90px;
     width: 350px;
     height: 350px;
   }
-  .skills{
+
+  .skills {
     margin-left: 10px;
     gap: 2px;
   }
-  .servelink{
+
+  .servelink {
     margin: -10px 0 0 0;
   }
 }
-@media(max-width:415px){
-  .servelink{
+
+@media(max-width:415px) {
+  .servelink {
     font-size: 18px;
   }
 }
+
+@media(max-width:376px) {
+  .right-section img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .bipleft {
+    margin: 50px;
+    margin: 0px 0 0 -90px;
+    width: 300px;
+    height: 300px;
+  }
+  .skills{
+    
+
+    margin: 0 0 0 50px;
+  }
+  .servelink {
+    visibility: hidden;
+    position: relative;
+  }
+
+  .servelink:after {
+    font-size: 18px;
+    color: black;
+    box-sizing: border-box;
+    background-color: rgb(159, 255, 255);
+    box-shadow: 0px 0px 20px rgb(0, 0, 0);
+    border-radius: 5px;
+    transition: 0.5s;
+    visibility: visible;
+    content: "Build a website with Me";
+    padding: 0 5px 0 7px;
+  }
+
+  .servelink:after:hover {
+    color: rgb(159, 255, 255);
+    background-color: black;
+    box-shadow: 0px 0px 20px lightblue;
+    transition: 0.5s;
+  }
+}
+
