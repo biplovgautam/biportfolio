@@ -125,6 +125,12 @@ footer ul i {
 .footer1 .social-links li a i:hover {
     transform: translateY(-5px);
 }
+.footer1 ul li a fa-youtube:hover {
+    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+
+    color: rgb(255, 0, 0);
+}
+
 
 .footer1 ul li a {
     transition: 0.2s;
