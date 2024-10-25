@@ -1,70 +1,80 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="icon" href="{% static 'images/icon.png' %}">
-<!--   {% static 'images/icon.png' %} -->
-<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-{% block head %} {% endblock head %}
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/icon.png' %}">
+    
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %} {% endblock head %}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<script src="https://kit.fontawesome.com/92608aa66e.js" crossorigin="anonymous"></script>
-<title>{% block title %}{% endblock title %} - Biplov Gautam</title>
-<link rel="stylesheet" href="/static/css/{% block style %}{% endblock style %}">
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/92608aa66e.js" crossorigin="anonymous"></script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/{% block style %}{% endblock style %}' %}">
+
+    <!-- Title -->
+    <title>{% block title %}{% endblock title %} - Biplov Gautam</title>
 </head>
 <body>
-<nav class="navbar" id="top">
-<div class="brand"><a href="/" >Biplov Gautam</a></div>
-<div id="menu-btn" class="menu-btn">
-<i class="fas fa-bars"></i>
-</div>
-<div class="nav-items">
-  <ul>
-    <li><a href="/" >Home</a></li>
-    <li><a href="/projects" >Projects</a></li>
-    <li><a href="/services" >Services</a></li>
-    <li><a href="/contact-me" >Contact me</a></li>
-    <li><a href="/about" >About me</a></li>
-  </ul>
-</div>
-</nav>
+    <!-- Navbar -->
+    <nav class="navbar" id="top">
+        <div class="brand"><a href="/" >Biplov Gautam</a></div>
+        <div id="menu-btn" class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-items">
+            <ul>
+                <li><a href="/" >Home</a></li>
+                <li><a href="/projects" >Projects</a></li>
+                <li><a href="/services" >Services</a></li>
+                <li><a href="/contact-me" >Contact me</a></li>
+                <li><a href="/about" >About me</a></li>
+            </ul>
+        </div>
+    </nav>
 
-{% block body %}
-{% endblock body %}
+    <!-- Main Content Block -->
+    {% block body %}
+    {% endblock body %}
 
-<br>
-<footer class="footer1">
-<ul class="social-links">
-<li><a href="https://facebook.com/biplov.gautam.31" target="_blank"><i color="white" class="fa-brands fa-facebook fa-xl"></i></a></li>
-<li><a href="https://twitter.com/BiplovGautam_" target="_blank"><i color="white" class="fa-brands fa-twitter fa-xl"></i></a></li>
-<li><a href="https://instagram.com/biplov_07" target="_blank"><i color="white" class="fa-brands fa-instagram fa-xl"></i></a></li>
-<li><a href="https://GitHub.com/biplovgautam" target="_blank"><i color="white" class="fa-brands fa-github fa-xl"></i></a></li>
-<li><a href="https://www.youtube.com/@biplovgautam" target="_blank"><i color="white" class="fa-brands fa-youtube fa-xl"></i></a></li>
-</ul><br>
-<ul class="links">
-<li><a href="/" >Home</a></li>
-<li><a href="/services" >Services</a></li>
-<li><a href="/projects" >Projects</a></li>
-<li><a href="/about" >About</a></li>
-</ul>
-<br>
-<div class="copy">Copyright &copy 2023 Biplovgautam</div>
+    <!-- Footer -->
+    <footer class="footer1">
+        <ul class="social-links">
+            <li><a href="https://facebook.com/biplov.gautam.31" target="_blank"><i class="fa-brands fa-facebook fa-xl"></i></a></li>
+            <li><a href="https://twitter.com/BiplovGautam_" target="_blank"><i class="fa-brands fa-twitter fa-xl"></i></a></li>
+            <li><a href="https://instagram.com/biplov_07" target="_blank"><i class="fa-brands fa-instagram fa-xl"></i></a></li>
+            <li><a href="https://GitHub.com/biplovgautam" target="_blank"><i class="fa-brands fa-github fa-xl"></i></a></li>
+            <li><a href="https://www.youtube.com/@biplovgautam" target="_blank"><i class="fa-brands fa-youtube fa-xl"></i></a></li>
+        </ul>
+        <br>
+        <ul class="links">
+            <li><a href="/" >Home</a></li>
+            <li><a href="/services" >Services</a></li>
+            <li><a href="/projects" >Projects</a></li>
+            <li><a href="/about" >About</a></li>
+        </ul>
+        <br>
+        <div class="copy">Copyright &copy; 2023 Biplov Gautam</div>
+    </footer>
 
-</footer>
-<script>
-document.querySelector("#menu-btn").addEventListener("click", () => {
-  document.querySelector(".navbar ul").classList.toggle("active");
-});
-</script>
-<script type="text/javascript">
-document.querySelector('section').addEventListener("touchstart",function(){
-document.querySelector(".navbar ul").classList.remove("active");
+    <!-- JavaScript for Navbar Toggle -->
+    <script>
+        document.querySelector("#menu-btn").addEventListener("click", () => {
+            document.querySelector(".navbar ul").classList.toggle("active");
+        });
+    </script>
 
-});
-</script>
-
+    <script type="text/javascript">
+        document.querySelector('section').addEventListener("touchstart",function(){
+            document.querySelector(".navbar ul").classList.remove("active");
+        });
+    </script>
 </body>
 </html>
