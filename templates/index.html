@@ -1,5 +1,6 @@
+{%load static%}
 {% extends "base.html" %}
-{% block style %}index.css{% endblock style %}
+{% block style %}{% static 'css/index.css' %}{% endblock style %}
 {% block title %}Home{% endblock title %}
 {% block body %}
 <section class="first-section">
