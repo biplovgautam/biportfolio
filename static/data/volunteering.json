@@ -1,0 +1,33 @@
+{
+  "title": "My Volunteering",
+  "subtitle": "Community contributions",
+  "volunteering": [
+    {
+      "id": 1,
+      "title": "Code For Nepal Volunteer",
+      "organization": "Code for Nepal",
+      "period": "2022 - Present",
+      "description": "Contributing to open-source projects aimed at increasing digital literacy in rural Nepal. Developing educational resources and conducting coding workshops in underserved communities.",
+      "icon": "fas fa-laptop-code",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "STEM Mentor",
+      "organization": "Nepal Innovation Lab",
+      "period": "2021 - Present",
+      "description": "Mentoring high school students in science and technology projects. Organized monthly coding bootcamps and helped students develop practical technology solutions for local problems.",
+      "icon": "fas fa-hands-helping",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": "Digital Literacy Instructor",
+      "organization": "Rural Tech Initiative",
+      "period": "2020 - 2021",
+      "description": "Taught basic computer skills to adults in rural communities. Created simplified learning materials in local languages to help bridge the digital divide.",
+      "icon": "fas fa-chalkboard-teacher",
+      "order": 3
+    }
+  ]
+}

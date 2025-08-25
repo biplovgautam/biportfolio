@@ -1,53 +1,559 @@
-
 {% extends "base.html" %}
-{%load static%}
+{% load static %}
+{% load custom_filters %}
 {% block style %}{% static 'css/index.css' %}{% endblock style %}
-{% block title %}Home{% endblock title %}
+{% block title %}Portfolio{% endblock title %}
 {% block body %}
-<section class="first-section">
-    <div class="left-section">
-        Hi!<br>
-        Myself <nobr class="name">Biplov.</nobr><br>
-        <div class="anim-left-section">
-            I'm a <span class="dynamic-text"></span>
-        </div><br>
-    </div>
-    <div class="right-section">
-        <img src="static/images/developer.png">
-    </div>
+<!-- Enhanced SVG for the morphing blob animation -->
+<svg width="0" height="0" style="position: absolute;">
+    <defs>
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+        </filter>
+        
+        <clipPath id="blob" clipPathUnits="objectBoundingBox">
+            <path d="M0.5,1 C0.776,1,1,0.776,1,0.5 C1,0.224,0.776,0,0.5,0 C0.224,0,0,0.224,0,0.5 C0,0.776,0.224,1,0.5,1 Z" id="blobPath">
+                <animate attributeName="d" 
+                         dur="20000ms"
+                         repeatCount="indefinite"
+                         calcMode="spline"
+                         keySplines="0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.42 0 0.58 1"
+                         values="M0.5,1 C0.776,1,1,0.776,1,0.5 C1,0.224,0.776,0,0.5,0 C0.224,0,0,0.224,0,0.5 C0,0.776,0.224,1,0.5,1 Z;
+                                M0.545,0.995 C0.7,0.995,0.902,0.828,0.955,0.639 C1.008,0.45,0.993,0.289,0.815,0.055 C0.636,-0.178,0.324,0.071,0.152,0.192 C-0.019,0.313,0.009,0.558,0.186,0.781 C0.364,1.004,0.389,0.995,0.545,0.995 Z;
+                                M0.5,1 C0.653,1,0.777,0.872,0.895,0.669 C1.013,0.466,1.097,0.251,0.916,0.127 C0.735,0.003,0.555,0.066,0.394,0.142 C0.232,0.218,0.004,0.335,0.111,0.513 C0.219,0.691,0.347,1,0.5,1 Z;
+                                M0.62,0.95 C0.78,0.95,0.96,0.83,0.99,0.64 C1.02,0.45,0.98,0.26,0.84,0.12 C0.7,-0.02,0.4,0.02,0.26,0.14 C0.12,0.26,0.02,0.51,0.12,0.69 C0.22,0.87,0.46,0.95,0.62,0.95 Z;
+                                M0.545,0.995 C0.7,0.995,0.958,0.988,0.998,0.795 C1.038,0.602,0.993,0.289,0.815,0.055 C0.636,-0.178,0.324,0.071,0.152,0.192 C-0.019,0.313,0.009,0.558,0.186,0.781 C0.364,1.004,0.389,0.995,0.545,0.995 Z;
+                                M0.5,0.9 C0.7,0.9,0.9,0.8,0.95,0.6 C1,0.4,1,0.2,0.8,0.1 C0.6,0,0.4,0.05,0.2,0.2 C0,0.35,0.05,0.7,0.2,0.8 C0.35,0.9,0.3,0.9,0.5,0.9 Z;
+                                M0.5,1 C0.776,1,1,0.776,1,0.5 C1,0.224,0.776,0,0.5,0 C0.224,0,0,0.224,0,0.5 C0,0.776,0.224,1,0.5,1 Z;"
+                ></animate>
+            </path>
+        </clipPath>
+    </defs>
+</svg>
 
-</section>
-<section class="second-section">
-        <div class="bipleft">
-            <img src="static/images/logo4.png">
+<!-- Home Section -->
+<section id="home" class="section home-section">
+    <div class="container">
+        <div class="home-content">
+            <div class="profile-content">
+                <div class="profile-image animate-fade-in">
+                    {% if profile.profile_image %}
+                        <img src="{{ profile.profile_image.url }}" alt="{{ profile.name }}">
+                    {% else %}
+                        <img src="{% static 'images/bip.png' %}" alt="{{ profile.name|default:'Biplov Gautam' }}">
+                    {% endif %}
+                </div>
+                <div class="profile-details animate-slide-up">
+                    <span class="greeting fade-in-up">Hello there! <span class="wave">👋</span></span>
+                    <h1 class="fade-in-up">I'm <span class="name">{{ profile.name|default:'Biplov Gautam' }}</span></h1>
+                    <div class="tagline fade-in-up">
+                        <span class="dynamic-text">{{ profile.title|default:'Computer Science Student & AI Enthusiast' }}</span>
+                    </div>
+                    <p class="bio fade-in-up">{{ profile.description|default:'Computer Science student with a passion for AI and machine learning.' }}</p>
+                    
+                    <div class="social-links-home fade-in-up">
+                        {% if profile.github_url %}
+                            <a href="{{ profile.github_url }}" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github fa-lg"></i></a>
+                        {% endif %}
+                        {% if profile.linkedin_url %}
+                            <a href="{{ profile.linkedin_url }}" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin fa-lg"></i></a>
+                        {% endif %}
+                        {% if profile.twitter_url %}
+                            <a href="{{ profile.twitter_url }}" target="_blank" aria-label="Twitter Profile"><i class="fab fa-twitter fa-lg"></i></a>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="profile-links fade-in-up">
+                        <a href="#projects" class="btn hover-lift">View My Projects</a>
+                        <a href="#contact" class="btn btn-outline hover-lift">Contact Me</a>
+                        {% if profile.resume_url %}
+                            <a href="{{ profile.resume_url }}" target="_blank" class="btn btn-outline hover-lift">Download Resume</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
-    <div class="bipright"><br><br><br>
-        <h2>I'm developing my skills in <i class="fa-solid fa-code" style="color: rgb(0, 0, 0); text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.697);"></i></h2><br>
-        <div class="skills">
-        <a href="/"><i class="fa-brands fa-html5 fa-beat-fade fa-5x" class="skill"  style="color: #ff5900;"></i></a>
-        <a href="/"><i class="fa-brands fa-css3-alt fa-beat-fade fa-5x" style="color: #005eff;"></i></a>
-        <a href="/"><i class="fa-brands fa-square-js fa-beat-fade fa-5x" style="color: #d6a800;"></i></a>
-        <a href="/"><i class="fa-brands fa-python fa-beat-fade fa-5x" style="color: #1d5819;"></i></a>
-        </div><br><br>
-        <h2><center><a class="servelink" href="/projects">Build yourself a website with me.</a></center></h2>
     </div>
 </section>
 
-<script src="/static/js/index.js"></script>
+<!-- Projects Section - Featured Projects Only -->
+<section id="projects" class="section projects-section">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">Featured <span>Projects</span></h2>
+            <p class="section-subtitle">Highlighting my best work</p>
+        </div>
+        
+        <div class="projects-container">
+            {% for project in featured_projects %}
+            <div class="project-card stagger-item hover-lift">
+                <div class="project-image {% cycle 'fade-in-left' 'fade-in-right' %}">
+                    {% with primary_image=project.get_primary_image %}
+                        {% if primary_image %}
+                            <img src="{{ primary_image.image.url }}" alt="{{ project.title }}">
+                        {% else %}
+                            <img src="{% static 'images/developer.png' %}" alt="{{ project.title }}">
+                        {% endif %}
+                    {% endwith %}
+                    <div class="project-overlay">
+                        <a href="{% url 'project_detail' project.id %}" class="project-view-btn">
+                            <i class="fas fa-eye"></i> View Details
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.short_description }}</p>
+                    <div class="project-tags">
+                        {% for tech in project.technologies.all %}
+                        <span class="tech-tag">{{ tech.name }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="project-links">
+                        {% if project.github_url %}
+                        <a href="{{ project.github_url }}" target="_blank" class="btn-sm">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        {% endif %}
+                        {% if project.demo_url %}
+                        <a href="{{ project.demo_url }}" target="_blank" class="btn-sm btn-outline">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'project_detail' project.id %}" class="btn-sm btn-primary">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="project-card stagger-item hover-lift">
+                <div class="project-image fade-in-left">
+                    <img src="{% static 'images/developer.png' %}" alt="Sample Project">
+                    <div class="project-overlay">
+                        <a href="#" class="project-view-btn">
+                            <i class="fas fa-eye"></i> View Details
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Sample Project</h3>
+                    <p>This is a sample project description. Add your real projects through the admin panel.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-sm">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="#" class="btn-sm btn-outline">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                        <a href="#" class="btn-sm btn-primary">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="section-footer fade-in-up">
+            <a href="{% url 'projects' %}" class="btn btn-outline view-all-btn">
+                <i class="fas fa-eye"></i> Explore All Projects
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section skills-section">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">My <span>Skills</span></h2>
+            <p class="section-subtitle">Technologies I work with</p>
+        </div>
+        
+        <div class="skills-container">
+            {% for category, skills in skills_by_category.items %}
+            <div class="skills-category">
+                <h3 class="category-title">{{ category }}</h3>
+                <div class="skills-grid">
+                    {% for skill in skills %}
+                    <div class="skill-card stagger-item hover-lift">
+                        {% if skill.icon %}
+                            <i class="{{ skill.icon }} fa-2x"></i>
+                        {% else %}
+                            <i class="fas fa-code fa-2x"></i>
+                        {% endif %}
+                        <h4>{{ skill.name }}</h4>
+                        <div class="skill-level">
+                            <span class="level level-{{ skill.proficiency }}">{{ skill.get_proficiency_display }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% empty %}
+            <!-- Fallback if no skills data -->
+            <div class="skills-category">
+                <h3 class="category-title">Programming Languages</h3>
+                <div class="skills-grid">
+                    <div class="skill-card stagger-item hover-lift">
+                        <i class="fab fa-python fa-2x"></i>
+                        <h4>Python</h4>
+                        <div class="skill-level">
+                            <span class="level level-advanced">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="section education-section">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">My <span>Education</span></h2>
+            <p class="section-subtitle">Academic background</p>
+        </div>
+        
+        <div class="timeline">
+            {% for edu in education %}
+            <div class="timeline-item fade-in-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>{{ edu.degree }}</h3>
+                    <p class="timeline-institution">{{ edu.institution }}</p>
+                    <p class="timeline-period">
+                        {{ edu.start_date|date:"M Y" }} - 
+                        {% if edu.is_current %}Present{% else %}{{ edu.end_date|date:"M Y" }}{% endif %}
+                    </p>
+                    {% if edu.description %}
+                        <p>{{ edu.description }}</p>
+                    {% endif %}
+                    {% if edu.activities %}
+                        <p><strong>Activities:</strong> {{ edu.activities }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <div class="timeline-item fade-in-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Bachelor of Computer Science</h3>
+                    <p class="timeline-institution">University Name</p>
+                    <p class="timeline-period">2020 - Present</p>
+                    <p>Add your education details through the admin panel.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Section -->
+<section id="certifications" class="section certifications-section">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">My <span>Certifications</span></h2>
+            <p class="section-subtitle">Professional development</p>
+        </div>
+        
+        <div class="certifications-container">
+            {% for cert in certifications %}
+            <div class="certification-card stagger-item hover-lift">
+                <div class="certification-logo">
+                    {% if cert.badge_image %}
+                        <img src="{{ cert.badge_image.url }}" alt="{{ cert.name }}">
+                    {% else %}
+                        <i class="fa-solid fa-certificate fa-2x"></i>
+                    {% endif %}
+                </div>
+                <div class="certification-content">
+                    <h3>{{ cert.name }}</h3>
+                    <p class="cert-issuer">{{ cert.issuer }}</p>
+                    <p class="cert-date">{{ cert.issue_date|date:"M Y" }}</p>
+                    {% if cert.credential_id %}
+                        <p class="cert-id">ID: {{ cert.credential_id }}</p>
+                    {% endif %}
+                    {% if cert.credential_url %}
+                        <a href="{{ cert.credential_url }}" target="_blank" class="cert-link">
+                            View Certificate <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <div class="certification-card stagger-item hover-lift">
+                <div class="certification-logo">
+                    <i class="fa-solid fa-certificate fa-2x"></i>
+                </div>
+                <div class="certification-content">
+                    <h3>Sample Certification</h3>
+                    <p class="cert-issuer">Certification Provider</p>
+                    <p class="cert-date">Jan 2024</p>
+                    <p>Add your certifications through the admin panel.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="section experience-section">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">Work <span>Experience</span></h2>
+            <p class="section-subtitle">Professional journey</p>
+        </div>
+        
+        <div class="timeline">
+            {% for exp in experience %}
+            <div class="timeline-item fade-in-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>{{ exp.title }}</h3>
+                    <p class="timeline-institution">{{ exp.organization }}</p>
+                    <p class="timeline-period">
+                        {{ exp.start_date|date:"M Y" }} - 
+                        {% if exp.is_current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                    </p>
+                    <span class="exp-type">{{ exp.get_experience_type_display }}</span>
+                    <p>{{ exp.description }}</p>
+                    {% if exp.technologies_used.all %}
+                        <div class="exp-technologies">
+                            <strong>Technologies:</strong>
+                            {% for tech in exp.technologies_used.all %}
+                                <span class="tech-tag">{{ tech.name }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <div class="timeline-item fade-in-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Sample Position</h3>
+                    <p class="timeline-institution">Company Name</p>
+                    <p class="timeline-period">2023 - Present</p>
+                    <span class="exp-type">Work Experience</span>
+                    <p>Add your experience details through the admin panel.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Blogs Section - Featured Blogs Only -->
+<section id="blogs" class="section blogs-section">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">My <span>Articles</span></h2>
+            <p class="section-subtitle">Featured blog posts and articles</p>
+        </div>
+        
+        <div class="blogs-container">
+            {% for blog in featured_blogs %}
+            <div class="blog-card stagger-item hover-lift">
+                <div class="blog-image">
+                    {% if blog.image %}
+                        <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                    {% else %}
+                        <div class="blog-placeholder">
+                            <i class="fas fa-blog fa-2x"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">{{ blog.published_date|date:"M d, Y" }}</div>
+                    <h3 class="blog-title">{{ blog.title }}</h3>
+                    <p class="blog-excerpt">{{ blog.description|truncatewords:20 }}</p>
+                    {% if blog.tags %}
+                        <div class="blog-tags">
+                            {% for tag in blog.tags|split:',' %}
+                                <span class="tag">{{ tag|strip }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <a href="{{ blog.url }}" target="_blank" class="blog-link">
+                        Read More <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="blog-card stagger-item hover-lift">
+                <div class="blog-image">
+                    <div class="blog-placeholder">
+                        <i class="fas fa-blog fa-2x"></i>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-date">January 1, 2024</div>
+                    <h3 class="blog-title">Sample Blog Post</h3>
+                    <p class="blog-excerpt">This is a sample blog post. Your Medium articles will appear here automatically.</p>
+                    <a href="#" class="blog-link">Read More <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="section-footer fade-in-up">
+            <a href="{% url 'blogs' %}" class="btn btn-outline view-all-btn">
+                <i class="fas fa-book-open"></i> View All Articles
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section contact-section">
+    <div class="container">
+        <div class="section-header fade-in-up">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <p class="section-subtitle">Let's work together</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                {% if profile %}
+                    <div class="contact-item stagger-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></p>
+                        </div>
+                    </div>
+                    
+                    {% if profile.phone %}
+                    <div class="contact-item stagger-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p><a href="tel:{{ profile.phone }}">{{ profile.phone }}</a></p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="contact-item stagger-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>{{ profile.location|default:"Location" }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item stagger-item">
+                        <i class="fas fa-paper-plane"></i>
+                        <div>
+                            <h3>Social</h3>
+                            <div class="contact-social">
+                                {% if profile.github_url %}
+                                    <a href="{{ profile.github_url }}" target="_blank"><i class="fab fa-github"></i></a>
+                                {% endif %}
+                                {% if profile.linkedin_url %}
+                                    <a href="{{ profile.linkedin_url }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                {% endif %}
+                                {% if profile.twitter_url %}
+                                    <a href="{{ profile.twitter_url }}" target="_blank"><i class="fab fa-twitter"></i></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <!-- Fallback if no profile data -->
+                    <div class="contact-item stagger-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:contact@example.com">contact@example.com</a></p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="contact-form">
+                <form method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Script references are already included in base.html -->
 <script>
-    const text = document.querySelector(".dynamic-text");
-    const textLoad = () => {
-        setTimeout(() => {
-            text.textContent = "Developer.";
-        }, 0);
-        setTimeout(() => {
-            text.textContent = "Designer.";
-        }, 4000);
-        setTimeout(() => {
-            text.textContent = "Student.";
-        }, 8000); //1s = 1000 milliseconds
-    }
-    textLoad();
-    setInterval(textLoad, 12000);
+    document.addEventListener('DOMContentLoaded', () => {
+        // Add animation classes to various elements for smoother entry
+        
+        // Make all sections animated
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('section');
+        });
+        
+        // Add staggered animations to cards and items
+        document.querySelectorAll('.project-card, .skill-card, .certification-card, .volunteer-card, .timeline-item').forEach((card, index) => {
+            if (!card.classList.contains('stagger-item')) {
+                card.classList.add('stagger-item');
+            }
+            
+            if (!card.classList.contains('hover-lift')) {
+                card.classList.add('hover-lift');
+            }
+        });
+        
+        // Add fade animations to section headers
+        document.querySelectorAll('.section-header, .section-title, .section-subtitle').forEach(header => {
+            header.classList.add('fade-in-up');
+        });
+        
+        // Add animation classes to forms and contact items
+        document.querySelectorAll('.form-group, .contact-item').forEach((item, index) => {
+            item.classList.add('animate-on-scroll');
+            item.style.transitionDelay = `${index * 100}ms`;
+        });
+        
+        // Make sure profile image has animation class and enhance hover effect
+        const profileImage = document.querySelector('.profile-image');
+        if (profileImage) {
+            if (!profileImage.classList.contains('animate-fade-in')) {
+                profileImage.classList.add('animate-fade-in');
+            }
+            
+            // Add hover effect to the profile image
+            profileImage.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+            });
+            
+            profileImage.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+    });
 </script>
 {% endblock body %}

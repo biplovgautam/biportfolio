@@ -1,28 +1,98 @@
 {% extends 'base.html' %}
-{% block head %}
-<link rel="stylesheet" href="/static/css/index.css">
-<link rel="stylesheet" href="/static/css/project.css">
-{% endblock head %}
-{% block title %}
-My Projects
-{% endblock title %}
-{% block body %}
-<section class="s01"><br><div class="h1"><h1>My Projects</h1></div><br></section>
-<section class="s1"><br>
-  <br>
-  <div class="d1"><a href="https://laxmibeekeeping.com.np/" target="_blank">
-  <div class="laxmileft">
-    <img height="300px" width="300px" class="laxmi" src="/static/images/laxmi.png" alt="error">
-  </div>
-  <div class="laxmiright">
-    <h2>Laxmi Bee Keeping</h2><br>
-    <div class="laxmiyt">
-      <iframe width="400" height="200" src="https://www.youtube.com/embed/iZH6ZvnmFBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-    
-    <p></p>
-  </div></a>
-  </div><br>
-</section>
+{% load static %}
 
-{% endblock body%}
+{% block title %}Projects - {{ profile.name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="projects-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>My Projects</h1>
+            <p>Explore all {{ total_projects }} of my projects</p>
+        </div>
+
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                {% with primary_image=project.get_primary_image %}
+                    {% if primary_image %}
+                    <div class="project-image">
+                        <img src="{{ primary_image.image.url }}" alt="{{ project.title }}">
+                        <div class="project-overlay">
+                            <a href="{% url 'project_detail' project.id %}" class="project-view-btn">
+                                <i class="fas fa-eye"></i> View Details
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endwith %}
+                
+                <div class="project-content">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.short_description }}</p>
+                    
+                    <div class="project-technologies">
+                        {% for tech in project.technologies.all %}
+                        <span class="tech-tag">{{ tech.name }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="project-links">
+                        {% if project.github_url %}
+                        <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        {% endif %}
+                        {% if project.demo_url %}
+                        <a href="{{ project.demo_url }}" target="_blank" class="btn btn-primary">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'project_detail' project.id %}" class="btn btn-secondary">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if projects.has_other_pages %}
+        <div class="pagination-container">
+            <nav aria-label="Projects pagination">
+                <ul class="pagination">
+                    {% if projects.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ projects.previous_page_number }}">Previous</a>
+                    </li>
+                    {% endif %}
+
+                    {% for num in projects.paginator.page_range %}
+                    {% if projects.number == num %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if projects.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ projects.next_page_number }}">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

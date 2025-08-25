@@ -1,0 +1,33 @@
+{
+  "title": "My Blogs",
+  "subtitle": "Latest articles from Medium",
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Building Scalable Django Applications: Best Practices",
+      "date": "April 15, 2023",
+      "excerpt": "Learn how to structure Django projects for maximum scalability and maintainability. This article covers project organization, optimizing database queries, and caching strategies.",
+      "image": "developer.png",
+      "link": "https://medium.com/@biplovgautam/building-scalable-django-applications-1a3b57c2e8f9",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "Introduction to Natural Language Processing with Python",
+      "date": "February 28, 2023",
+      "excerpt": "A beginner's guide to NLP using Python libraries. Explore text preprocessing, sentiment analysis, and building simple language models with practical examples.",
+      "image": "developer.png",
+      "link": "https://medium.com/@biplovgautam/introduction-to-nlp-with-python-2b85e2e8b6c1",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": "Responsive Web Design: Mobile-First Approach",
+      "date": "January 10, 2023",
+      "excerpt": "How to implement a mobile-first design strategy for modern websites. This tutorial covers CSS media queries, flexible grid layouts, and responsive design principles.",
+      "image": "developer.png",
+      "link": "https://medium.com/@biplovgautam/responsive-web-design-mobile-first-approach-3f7d85c9e2a4",
+      "order": 3
+    }
+  ]
+}

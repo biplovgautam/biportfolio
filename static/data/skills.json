@@ -1,0 +1,54 @@
+{
+  "title": "My Skills",
+  "subtitle": "Technologies I work with",
+  "skills": [
+    {
+      "id": 1,
+      "name": "HTML5",
+      "icon": "fa-brands fa-html5",
+      "color": "#ff5900",
+      "description": "Semantic markup for modern web",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "name": "CSS3",
+      "icon": "fa-brands fa-css3-alt",
+      "color": "#005eff",
+      "description": "Stylish and responsive designs",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "name": "JavaScript",
+      "icon": "fa-brands fa-square-js",
+      "color": "#d6a800",
+      "description": "Interactive and dynamic experiences",
+      "order": 3
+    },
+    {
+      "id": 4,
+      "name": "Python",
+      "icon": "fa-brands fa-python",
+      "color": "#1d5819",
+      "description": "Backend development with Django",
+      "order": 4
+    },
+    {
+      "id": 5,
+      "name": "AI & ML",
+      "icon": "fa-solid fa-brain",
+      "color": "#9c27b0",
+      "description": "Machine learning and AI concepts",
+      "order": 5
+    },
+    {
+      "id": 6,
+      "name": "Database",
+      "icon": "fa-solid fa-database",
+      "color": "#ffc107",
+      "description": "SQL and database management",
+      "order": 6
+    }
+  ]
+}

@@ -1,4 +1,35 @@
-env/
+venv/
 django_project/__pycache__/
 pages/__pycache__/
 pages/migrations/__pycache__/
+
+# Database
+db.sqlite3
+db.sqlite3-journal
+
+# Media files (if your project uses them)
+media/
+
+# Static files collected (since you can regenerate them)
+staticroot/
+
+# Environment variables
+.env
+.env.local
+
+# IDE specific files
+.vscode/
+.idea/
+*.sublime-*
+
+# Python bytecode files
+*.py[cod]
+*$py.class
+__pycache__/
+*.so
+
+# Log files
+*.log
+
+# Local development settings
+local_settings.py

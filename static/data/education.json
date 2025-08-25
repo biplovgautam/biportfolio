@@ -1,0 +1,30 @@
+{
+  "title": "My Education",
+  "subtitle": "Academic background",
+  "education": [
+    {
+      "id": 1,
+      "degree": "Bachelor of Computer Science and Information Technology",
+      "institution": "Tribhuvan University, Nepal",
+      "period": "2021 - Present",
+      "description": "Studying computer science with a focus on artificial intelligence and machine learning. Currently maintaining a 3.8 GPA and participating in the university's AI research group.",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "degree": "Higher Secondary Education",
+      "institution": "St. Xavier's College, Kathmandu",
+      "period": "2019 - 2021",
+      "description": "Graduated with distinction in Science stream with Computer Science as an elective. Ranked in the top 5% of students nationally in the board exams.",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "degree": "Secondary Education",
+      "institution": "Mount Everest School, Kathmandu",
+      "period": "2007 - 2019",
+      "description": "Completed secondary education with honors in Mathematics and Science. Participated in national level mathematics and science olympiads.",
+      "order": 3
+    }
+  ]
+}

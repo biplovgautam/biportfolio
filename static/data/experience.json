@@ -1,0 +1,33 @@
+{
+  "title": "Work Experience",
+  "subtitle": "Professional journey",
+  "experience": [
+    {
+      "id": 1,
+      "position": "Freelance Web Developer",
+      "company": "Self-employed",
+      "period": "2022 - Present",
+      "description": "Designing and developing websites for local businesses and startups. Created over 10 custom websites with focus on responsive design, SEO optimization, and performance. Specialized in Django-based solutions for small businesses.",
+      "animation": "fade-in-left",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "position": "Research Assistant",
+      "company": "AI Research Lab, Tribhuvan University",
+      "period": "2023 - Present",
+      "description": "Assisting in natural language processing research focused on Nepali language AI applications. Implementing machine learning models for text classification and sentiment analysis of Nepali text data.",
+      "animation": "fade-in-right",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "position": "Junior Web Developer",
+      "company": "Tech Innovators Nepal",
+      "period": "2021 - 2022",
+      "description": "Worked on front-end development for multiple client projects. Implemented responsive designs, optimized website performance, and collaborated with the design team to create user-friendly interfaces.",
+      "animation": "fade-in-left",
+      "order": 3
+    }
+  ]
+}

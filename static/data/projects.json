@@ -1,0 +1,86 @@
+{
+  "title": "My Projects",
+  "subtitle": "Recent work I’ve done",
+  "projects": [
+    {
+      "id": 1,
+      "title": "YouTube Video Summarizer",
+      "image": "youtube.png",
+      "description": "An AI-powered tool that converts YouTube audio into text and summarizes it using Whisper and BART NLP models. Built with Django.",
+      "tags": ["Django", "Whisper", "BART", "NLP", "AI"],
+      "github_link": "https://github.com/biplovgautam/youtube-summarizer",
+      "demo_link": "#",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "Evoza Browser",
+      "image": "evoza.png",
+      "description": "A lightweight custom web browser built using JavaFX and WebView. Includes navigation controls, custom URL bar, and modern UI.",
+      "tags": ["JavaFX", "Java", "WebView", "Desktop App"],
+      "github_link": "https://github.com/biplovgautam/Evoza",
+      "demo_link": "#",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": "Obesity Prediction Model",
+      "image": "obesity.png",
+      "description": "A machine learning model classifying individuals into weight categories using healthcare data and Random Forest classifier.",
+      "tags": ["Python", "Scikit‑learn", "ML", "Data Science"],
+      "github_link": "https://github.com/biplovgautam/obesity-prediction-model",
+      "demo_link": "#",
+      "order": 3
+    },
+    {
+      "id": 4,
+      "title": "Nepali Sentiment Analysis",
+      "image": "sentiment.png",
+      "description": "An NLP model detecting sentiment in Nepali-language text using TF‑IDF and traditional classification algorithms.",
+      "tags": ["NLP", "Text Classification", "Nepali", "Machine Learning"],
+      "github_link": "https://github.com/oya163/nepali-sentiment-analysis",
+      "demo_link": "#",
+      "order": 4
+    },
+    {
+      "id": 5,
+      "title": "Himalai Expense Tracker (Backend)",
+      "image": "himalai.png",
+      "description": "RESTful backend for an expense-tracking app using Django REST Framework, JWT authentication, expense categorization, and reporting endpoints.",
+      "tags": ["Django REST", "Python", "APIs", "Backend"],
+      "github_link": "https://github.com/biplovgautam/himalai-expense-tracker-backend",
+      "demo_link": "#",
+      "order": 5
+    },
+    {
+      "id": 6,
+      "title": "Jawafai (Android App)",
+      "image": "jawafai.png",
+      "description": "An Android chatbot app currently in development using Kotlin. Features conversational UI powered by custom NLP logic.",
+      "tags": ["Kotlin", "Android", "Chatbot", "NLP"],
+      "github_link": "https://github.com/biplovgautam/jawafai",
+      "demo_link": "#",
+      "order": 6
+    },
+    {
+      "id": 7,
+      "title": "Laxmi Beekeeping",
+      "image": "laxmi.png",
+      "description": "A business website for honey production with responsive product pages and secure payment integration.",
+      "tags": ["HTML/CSS", "JavaScript", "UI/UX", "E‑commerce"],
+      "github_link": "https://github.com/biplovgautam/laxmi-beekeeping",
+      "demo_link": "https://laxmibeekeeping.com",
+      "order": 7
+    },
+    {
+      "id": 8,
+      "title": "Portfolio Website",
+      "image": "portfolio.png",
+      "description": "Single‑page Django-driven personal portfolio with clean animations, a floating sidebar, and responsive design.",
+      "tags": ["Django", "CSS3", "JavaScript", "Responsive"],
+      "github_link": "https://github.com/biplovgautam/portfolio",
+      "demo_link": "#",
+      "order": 8
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Biplov Gautam",
+  "image": "bip.png",
+  "greeting": "Hey! 👋",
+  "titles": [
+    "AI & ML Developer",
+    "Full Stack Developer",
+    "Open Source Contributor",
+    "CS Student @ Coventry University"
+  ],
+  "bio": "I'm a passionate Computer Science student deeply interested in artificial intelligence and full-stack development. I enjoy building real-world AI applications, writing clean code, and sharing ideas through open source. With experience in Django, REST APIs, JavaScript, and machine learning, I aim to bridge the gap between smart systems and intuitive user experiences.",
+  "socials": [
+    {
+      "platform": "GitHub",
+      "icon": "fab fa-github fa-lg",
+      "link": "https://github.com/biplovgautam"
+    },
+    {
+      "platform": "LinkedIn",
+      "icon": "fab fa-linkedin fa-lg",
+      "link": "https://www.linkedin.com/in/biplovgautam/"
+    },
+    {
+      "platform": "Medium",
+      "icon": "fab fa-medium fa-lg",
+      "link": "https://medium.com/@madhavbiplov"
+    }
+  ],
+  "buttons": [
+    {
+      "text": "Explore Projects",
+      "link": "#projects",
+      "class": "btn hover-lift"
+    },
+    {
+      "text": "Get In Touch",
+      "link": "#contact",
+      "class": "btn btn-outline hover-lift"
+    }
+  ]
+}

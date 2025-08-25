@@ -1,0 +1,58 @@
+{
+  "title": "Get In Touch",
+  "subtitle": "Let's work together",
+  "contact": [
+    {
+      "id": 1,
+      "type": "Email",
+      "icon": "fas fa-envelope",
+      "value": "contact@biplovgautam.com",
+      "link": "mailto:contact@biplovgautam.com",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "type": "Phone",
+      "icon": "fas fa-phone-alt",
+      "value": "+977 984 123 4567",
+      "link": "tel:+9779841234567",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "type": "Location",
+      "icon": "fas fa-map-marker-alt",
+      "value": "Kathmandu, Nepal",
+      "link": null,
+      "order": 3
+    },
+    {
+      "id": 4,
+      "type": "Social",
+      "icon": "fas fa-paper-plane",
+      "socials": [
+        {
+          "name": "GitHub",
+          "icon": "fab fa-github",
+          "link": "https://github.com/biplovgautam"
+        },
+        {
+          "name": "LinkedIn",
+          "icon": "fab fa-linkedin",
+          "link": "https://www.linkedin.com/in/biplovgautam/"
+        },
+        {
+          "name": "Medium",
+          "icon": "fab fa-medium",
+          "link": "https://medium.com/@biplovgautam"
+        },
+        {
+          "name": "Twitter",
+          "icon": "fab fa-twitter",
+          "link": "https://twitter.com/BiplovGautam_"
+        }
+      ],
+      "order": 4
+    }
+  ]
+}

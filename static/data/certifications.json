@@ -1,0 +1,36 @@
+{
+  "title": "My Certifications",
+  "subtitle": "Professional development",
+  "certifications": [
+    {
+      "id": 1,
+      "title": "Machine Learning Specialization",
+      "issuer": "Coursera - Stanford University",
+      "date": "February 2023",
+      "description": "Comprehensive three-course specialization covering machine learning algorithms, neural networks, and practical ML applications.",
+      "link": "#",
+      "icon": "fa-solid fa-certificate",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "Django for Web Development",
+      "issuer": "Udemy",
+      "date": "October 2022",
+      "description": "In-depth course covering Django framework, including models, views, templates, forms, authentication, and deployment strategies.",
+      "link": "#",
+      "icon": "fa-solid fa-certificate",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": "AWS Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "date": "June 2022",
+      "description": "Foundation-level certification covering AWS cloud concepts, architecture, security, and basic services.",
+      "link": "#",
+      "icon": "fa-solid fa-certificate",
+      "order": 3
+    }
+  ]
+}
