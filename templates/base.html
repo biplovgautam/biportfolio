@@ -54,15 +54,14 @@
         </div>
         <nav class="sidebar-nav">
             <ul>
-                <li><a href="#home" class="nav-link active" data-section="home"><i class="fas fa-home"></i><span>Home</span></a></li>
-                <li><a href="#projects" class="nav-link" data-section="projects"><i class="fas fa-code"></i><span>Projects</span></a></li>
-                <li><a href="#skills" class="nav-link" data-section="skills"><i class="fas fa-laptop-code"></i><span>Skills</span></a></li>
-                <li><a href="#education" class="nav-link" data-section="education"><i class="fas fa-graduation-cap"></i><span>Education</span></a></li>
-                <li><a href="#certifications" class="nav-link" data-section="certifications"><i class="fas fa-certificate"></i><span>Certifications</span></a></li>
-                <li><a href="#volunteering" class="nav-link" data-section="volunteering"><i class="fas fa-hands-helping"></i><span>Volunteering</span></a></li>
-                <li><a href="#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase"></i><span>Experience</span></a></li>
-                <li><a href="#blogs" class="nav-link" data-section="blogs"><i class="fas fa-blog"></i><span>Blogs</span></a></li>
-                <li><a href="#contact" class="nav-link" data-section="contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+                <li><a href="{% url 'home' %}" class="nav-link" data-section="home"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="{% url 'projects' %}" class="nav-link" data-section="projects"><i class="fas fa-code"></i><span>Projects</span></a></li>
+                <li><a href="{% url 'home' %}#skills" class="nav-link" data-section="skills"><i class="fas fa-laptop-code"></i><span>Skills</span></a></li>
+                <li><a href="{% url 'home' %}#education" class="nav-link" data-section="education"><i class="fas fa-graduation-cap"></i><span>Education</span></a></li>
+                <li><a href="{% url 'home' %}#certifications" class="nav-link" data-section="certifications"><i class="fas fa-certificate"></i><span>Certifications</span></a></li>
+                <li><a href="{% url 'home' %}#experience" class="nav-link" data-section="experience"><i class="fas fa-briefcase"></i><span>Experience</span></a></li>
+                <li><a href="{% url 'blogs' %}" class="nav-link" data-section="blogs"><i class="fas fa-blog"></i><span>Blogs</span></a></li>
+                <li><a href="{% url 'home' %}#contact" class="nav-link" data-section="contact"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
             </ul>
         </nav>
         <div class="sidebar-footer">
@@ -101,6 +100,7 @@
     <!-- JavaScript Files -->
     <script src="{% static 'js/animations.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/gallery.js' %}"></script>
     <script>
         // Base script to ensure essential functionality and avoid conflicts 
         // with external JS files
@@ -226,7 +226,38 @@
             // Initialize active link on page load and scroll
             setActiveLink();
             window.addEventListener('scroll', setActiveLink, { passive: true });
+            
+            // Navigation highlighting based on current page
+            highlightCurrentNav();
         });
+        
+        // Function to highlight current navigation item
+        function highlightCurrentNav() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                
+                // Get the href without the domain
+                const linkPath = new URL(link.href).pathname;
+                
+                // Check if current page matches navigation item
+                if (currentPath === '/' && linkPath === '/') {
+                    // Home page
+                    link.classList.add('active');
+                } else if (currentPath.startsWith('/project') && linkPath === '/projects/') {
+                    // Project detail pages should highlight projects nav
+                    link.classList.add('active');
+                } else if (currentPath === linkPath) {
+                    // Direct page match
+                    link.classList.add('active');
+                } else if (currentPath.startsWith(linkPath) && linkPath !== '/') {
+                    // Subpage match (like /projects/something matches /projects/)
+                    link.classList.add('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>

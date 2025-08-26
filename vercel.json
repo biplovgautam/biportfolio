@@ -26,5 +26,9 @@
       "src": "/(.*)",
       "dest": "django_project/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "PYTHONPATH": "/vercel/path0",
+    "DJANGO_SETTINGS_MODULE": "django_project.settings"
+  }
 }
