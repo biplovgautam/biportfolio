@@ -30,10 +30,5 @@
   "env": {
     "PYTHONPATH": "/vercel/path0",
     "DJANGO_SETTINGS_MODULE": "django_project.settings"
-  },
-  "functions": {
-    "django_project/wsgi.py": {
-      "maxDuration": 30
-    }
   }
 }
