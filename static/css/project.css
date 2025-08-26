@@ -1,6 +1,117 @@
 /* Minimal Project Detail Page Styles */
 
-/* Projects Page Header */
+/* Compact Projects Page Header */
+.projects-page-header-compact {
+    padding: 80px 0 30px;
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header-compact {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.page-title-compact {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.page-subtitle-compact {
+    font-size: 1rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Compact Projects Grid */
+.projects-grid-section-compact {
+    padding: 40px 0;
+    background: var(--bg-color);
+}
+
+.projects-grid-compact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.project-card-compact {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.project-card-compact:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+.project-image-compact {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.project-image-compact img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card-compact:hover .project-image-compact img {
+    transform: scale(1.05);
+}
+
+.project-content-compact {
+    padding: 20px;
+}
+
+.project-content-compact h3 {
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.project-content-compact p {
+    color: var(--text-light);
+    margin-bottom: 12px;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.tech-tag-small {
+    background: var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.project-links-compact {
+    margin-top: 15px;
+}
+
+.project-links-compact .btn-sm {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+}
+
+/* Regular Projects Page Styles (keep existing for backward compatibility) */
 .projects-page-header {
     padding: 100px 0 60px;
     background: var(--bg-color);
@@ -483,13 +594,23 @@
     }
     
     .hero-title,
-    .page-title {
+    .page-title,
+    .page-title-compact {
         font-size: 2.5rem;
     }
     
+    .page-title-compact {
+        font-size: 2rem;
+    }
+    
     .hero-description,
-    .page-subtitle {
+    .page-subtitle,
+    .page-subtitle-compact {
         font-size: 1.1rem;
+    }
+    
+    .page-subtitle-compact {
+        font-size: 0.95rem;
     }
     
     .action-buttons {
@@ -498,6 +619,11 @@
     
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .projects-grid-compact {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
     }
     
@@ -513,12 +639,21 @@
     .main-image {
         height: 300px;
     }
+    
+    .project-image-compact {
+        height: 150px;
+    }
+    
+    .projects-page-header-compact {
+        padding: 60px 0 20px;
+    }
 }
 
 @media (max-width: 480px) {
     .project-nav,
-    .projects-page-header {
-        padding: 80px 0 15px;
+    .projects-page-header,
+    .projects-page-header-compact {
+        padding: 60px 0 15px;
     }
     
     .hero-title,
@@ -526,9 +661,17 @@
         font-size: 2rem;
     }
     
+    .page-title-compact {
+        font-size: 1.8rem;
+    }
+    
     .hero-description,
     .page-subtitle {
         font-size: 1rem;
+    }
+    
+    .page-subtitle-compact {
+        font-size: 0.9rem;
     }
     
     .tech-stack {
@@ -547,5 +690,13 @@
     
     .section-title {
         font-size: 2rem;
+    }
+    
+    .projects-grid-compact {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-content-compact {
+        padding: 15px;
     }
 }

@@ -11,8 +11,8 @@
 {% block body %}
 <!-- Main Content Area -->
 <main class="main-content">
-    <!-- Projects Page Header -->
-    <section class="projects-page-header section">
+    <!-- Compact Projects Page Header -->
+    <section class="projects-page-header-compact">
         <div class="container">
             <div class="breadcrumb fade-in-up">
                 <a href="{% url 'home' %}" class="breadcrumb-link">
@@ -22,21 +22,21 @@
                 <span class="breadcrumb-current">Projects</span>
             </div>
             
-            <div class="page-header fade-in-up">
-                <h1 class="page-title">My Projects</h1>
-                <p class="page-subtitle">Explore all {{ total_projects }} of my projects showcasing various technologies and skills</p>
+            <div class="page-header-compact fade-in-up">
+                <h1 class="page-title-compact">My Projects</h1>
+                <p class="page-subtitle-compact">Explore all {{ total_projects }} of my projects showcasing various technologies and skills</p>
             </div>
         </div>
     </section>
 
-    <!-- Projects Grid Section -->
-    <section class="projects-grid-section section">
+    <!-- Compact Projects Grid Section -->
+    <section class="projects-grid-section-compact">
         <div class="container">
             {% if projects %}
-            <div class="projects-grid">
+            <div class="projects-grid-compact">
                 {% for project in projects %}
-                <div class="project-card stagger-item hover-lift fade-in-up">
-                    <div class="project-image">
+                <div class="project-card-compact stagger-item hover-lift fade-in-up">
+                    <div class="project-image-compact">
                         {% with primary_image=project.get_primary_image %}
                             {% if primary_image %}
                                 <img src="{{ primary_image.image.url }}" alt="{{ project.title }}">
@@ -55,30 +55,20 @@
                         </div>
                         {% endif %}
                     </div>
-                    <div class="project-content">
+                    <div class="project-content-compact">
                         <h3>{{ project.title }}</h3>
-                        <p>{{ project.short_description|truncatewords:20 }}</p>
+                        <p>{{ project.short_description|truncatewords:15 }}</p>
                         <div class="project-tags">
-                            {% for tech in project.technologies.all|slice:":4" %}
-                            <span class="tech-tag">{{ tech.name }}</span>
+                            {% for tech in project.technologies.all|slice:":3" %}
+                            <span class="tech-tag-small">{{ tech.name }}</span>
                             {% endfor %}
-                            {% if project.technologies.count > 4 %}
-                            <span class="tech-tag">+{{ project.technologies.count|add:"-4" }}</span>
+                            {% if project.technologies.count > 3 %}
+                            <span class="tech-tag-small">+{{ project.technologies.count|add:"-3" }}</span>
                             {% endif %}
                         </div>
-                        <div class="project-links">
-                            {% if project.github_url %}
-                            <a href="{{ project.github_url }}" target="_blank" class="btn-sm">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            {% endif %}
-                            {% if project.demo_url %}
-                            <a href="{{ project.demo_url }}" target="_blank" class="btn-sm btn-outline">
-                                <i class="fas fa-external-link-alt"></i> Demo
-                            </a>
-                            {% endif %}
+                        <div class="project-links-compact">
                             <a href="{% url 'project_detail' project.id %}" class="btn-sm btn-primary">
-                                <i class="fas fa-info-circle"></i> Details
+                                <i class="fas fa-arrow-right"></i> View Project
                             </a>
                         </div>
                     </div>

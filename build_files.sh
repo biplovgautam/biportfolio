@@ -1,16 +1,31 @@
 #!/bin/bash
 echo "BUILD STARTED"
 
+# Set Python version
+PYTHON_VERSION="python3.11"
+
+# Check if Python 3.11 is available, fallback to python3
+if command -v python3.11 &> /dev/null; then
+    PYTHON_CMD="python3.11"
+elif command -v python3 &> /dev/null; then
+    PYTHON_CMD="python3"
+else
+    echo "No suitable Python version found"
+    exit 1
+fi
+
+echo "Using Python: $PYTHON_CMD"
+
 # Upgrade pip first
-python3.9 -m pip install --upgrade pip
+$PYTHON_CMD -m pip install --upgrade pip
 
 # Install requirements
-python3.9 -m pip install -r requirements.txt
+$PYTHON_CMD -m pip install -r requirements.txt
 
 # Run migrations
-python3.9 manage.py migrate --noinput
+$PYTHON_CMD manage.py migrate --noinput
 
 # Collect static files
-python3.9 manage.py collectstatic --noinput --clear
+$PYTHON_CMD manage.py collectstatic --noinput --clear
 
 echo "BUILD END"

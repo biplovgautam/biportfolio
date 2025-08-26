@@ -6,7 +6,7 @@
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
-        "runtime": "python3.9"
+        "runtime": "python3.11"
       }
     },
     {
@@ -30,5 +30,10 @@
   "env": {
     "PYTHONPATH": "/vercel/path0",
     "DJANGO_SETTINGS_MODULE": "django_project.settings"
+  },
+  "functions": {
+    "django_project/wsgi.py": {
+      "maxDuration": 30
+    }
   }
 }
