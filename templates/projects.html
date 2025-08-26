@@ -3,40 +3,37 @@
 
 {% block title %}Projects{% endblock %}
 
+{% block style %}{% static 'css/index.css' %}{% endblock style %}
+
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
 <link rel="stylesheet" href="{% static 'css/project.css' %}">
 {% endblock %}
 
 {% block body %}
-<!-- Main Content Area -->
-<main class="main-content">
-    <!-- Compact Projects Page Header -->
-    <section class="projects-page-header-compact">
-        <div class="container">
-            <div class="breadcrumb fade-in-up">
+<!-- Projects Section with Same Styling as Homepage -->
+<section id="projects" class="section projects-section">
+    <div class="container">
+        <!-- Compact Top Bar Navigation -->
+        <div class="top-bar-nav fade-in-up">
+            <div class="breadcrumb-compact">
                 <a href="{% url 'home' %}" class="breadcrumb-link">
                     <i class="fas fa-home"></i> Home
                 </a>
                 <span class="breadcrumb-separator">/</span>
                 <span class="breadcrumb-current">Projects</span>
             </div>
-            
-            <div class="page-header-compact fade-in-up">
-                <h1 class="page-title-compact">My Projects</h1>
-                <p class="page-subtitle-compact">Explore all {{ total_projects }} of my projects showcasing various technologies and skills</p>
+            <div class="page-info">
+                <h1 class="page-title-inline">My Projects</h1>
+                <span class="project-count">({{ total_projects }} projects)</span>
             </div>
         </div>
-    </section>
-
-    <!-- Compact Projects Grid Section -->
-    <section class="projects-grid-section-compact">
-        <div class="container">
+        
+        <!-- Projects Container - EXACT same as homepage -->
+        <div class="projects-container">
             {% if projects %}
-            <div class="projects-grid-compact">
                 {% for project in projects %}
-                <div class="project-card-compact stagger-item hover-lift fade-in-up">
-                    <div class="project-image-compact">
+                <div class="project-card stagger-item hover-lift">
+                    <div class="project-image {% cycle 'fade-in-left' 'fade-in-right' %}">
                         {% with primary_image=project.get_primary_image %}
                             {% if primary_image %}
                                 <img src="{{ primary_image.image.url }}" alt="{{ project.title }}">
@@ -55,41 +52,66 @@
                         </div>
                         {% endif %}
                     </div>
-                    <div class="project-content-compact">
+                    <div class="project-content">
                         <h3>{{ project.title }}</h3>
-                        <p>{{ project.short_description|truncatewords:15 }}</p>
+                        <p>{{ project.short_description }}</p>
                         <div class="project-tags">
-                            {% for tech in project.technologies.all|slice:":3" %}
-                            <span class="tech-tag-small">{{ tech.name }}</span>
+                            {% for tech in project.technologies.all %}
+                            <span class="tech-tag">{{ tech.name }}</span>
                             {% endfor %}
-                            {% if project.technologies.count > 3 %}
-                            <span class="tech-tag-small">+{{ project.technologies.count|add:"-3" }}</span>
-                            {% endif %}
                         </div>
-                        <div class="project-links-compact">
+                        <div class="project-links">
+                            {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" class="btn-sm">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            {% endif %}
+                            {% if project.demo_url %}
+                            <a href="{{ project.demo_url }}" target="_blank" class="btn-sm btn-outline">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                            {% endif %}
                             <a href="{% url 'project_detail' project.id %}" class="btn-sm btn-primary">
-                                <i class="fas fa-arrow-right"></i> View Project
+                                <i class="fas fa-info-circle"></i> Details
                             </a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-            </div>
             {% else %}
-            <div class="no-projects fade-in-up">
-                <div class="empty-state">
-                    <i class="fas fa-folder-open"></i>
-                    <h3>No Projects Yet</h3>
-                    <p>Projects will appear here once they are added through the admin panel.</p>
-                    <a href="{% url 'home' %}" class="btn btn-primary">
-                        <i class="fas fa-home"></i> Back to Home
-                    </a>
+            <div class="project-card stagger-item hover-lift">
+                <div class="project-image fade-in-left">
+                    <img src="{% static 'images/developer.png' %}" alt="Sample Project">
+                    <div class="project-overlay">
+                        <a href="#" class="project-view-btn">
+                            <i class="fas fa-eye"></i> View Details
+                        </a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Sample Project</h3>
+                    <p>This is a sample project description. Add your real projects through the admin panel.</p>
+                    <div class="project-tags">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-sm">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="#" class="btn-sm btn-outline">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                        <a href="#" class="btn-sm btn-primary">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
                 </div>
             </div>
             {% endif %}
         </div>
-    </section>
-</main>
+    </div>
+</section>
 
 <!-- Include animations script -->
 <script src="{% static 'js/animations.js' %}"></script>
